@@ -21,6 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Data", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Api", "src\Authentication.Api\Authentication.Api.csproj", "{36EA43BD-5996-40FF-B81B-B55CA287C218}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{1C5C27D7-6A94-4AEC-8D7A-CB75DF190CE5}"
+	ProjectSection(SolutionItems) = preProject
+		Copilot.md = Copilot.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

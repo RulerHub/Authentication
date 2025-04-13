@@ -1,6 +1,32 @@
-@Authentication.Api_HostAddress = http://localhost:5202
+@Authentication.Api_HostAddress = https://localhost:7163
 
-GET {{Authentication.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{Authentication.Api_HostAddress}}/user/create
+Content-Type: application/json
+
+{
+    "Username" : "string",
+    "Email" : "string@rulerhub.com",
+    "Password" : "string",
+    "ConfirmsPassword" : "string"
+}
+
+###
+
+GET {{Authentication.Api_HostAddress}}/user/index
+
+###
+
+@id=1
+GET {{Authentication.Api_HostAddress}}/User/get/{{id}}
+
+###
+
+POST {{Authentication.Api_HostAddress}}/user/authorize
+Content-Type: application/json
+
+{
+  "Email" : "adrian@rulerhub.com",
+  "Password" : "Tor.2024"
+}
 
 ###

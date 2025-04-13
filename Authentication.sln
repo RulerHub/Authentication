@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{1C5C27D7-6A9
 		Copilot.md = Copilot.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "ext\api\api.csproj", "{D5A3D131-6F58-EBB4-BEA2-264880A5FC3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{36EA43BD-5996-40FF-B81B-B55CA287C218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36EA43BD-5996-40FF-B81B-B55CA287C218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36EA43BD-5996-40FF-B81B-B55CA287C218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A3D131-6F58-EBB4-BEA2-264880A5FC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A3D131-6F58-EBB4-BEA2-264880A5FC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A3D131-6F58-EBB4-BEA2-264880A5FC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A3D131-6F58-EBB4-BEA2-264880A5FC3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{126B138A-DA2E-4D6C-8927-A0EB161BEA11} = {95E051F5-95B7-4552-B1F2-98BFA1D97E7E}
 		{7E789CD3-06C6-4D3F-A006-56BDADB243B5} = {AD6E2E82-F69E-4203-AB8E-1E87DD429169}
 		{36EA43BD-5996-40FF-B81B-B55CA287C218} = {AD6E2E82-F69E-4203-AB8E-1E87DD429169}
+		{D5A3D131-6F58-EBB4-BEA2-264880A5FC3E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C95A604D-7390-4B82-9BD4-0DD280D367C1}

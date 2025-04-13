@@ -21,8 +21,4 @@
     <ProjectReference Include="..\..\shd\Authentication.Core\Authentication.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Sessions\" />
-  </ItemGroup>
-
 </Project>

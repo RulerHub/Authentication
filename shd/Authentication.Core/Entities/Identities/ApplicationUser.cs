@@ -18,7 +18,5 @@ public class ApplicationUser : Entity
     public required string Email { get; set; }
     [MaxLength(100)]
     public required string Password { get; set; } // Stores hashed password
-    [MaxLength(10)]
-    public string Status { get; set; } = String.Empty;
     //public List<Role> Roles { get; set; } = [];
 }

@@ -12,22 +12,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Authentication.Data.Services.Users.Implement;
 
-/// <summary>
-/// Servicio para gestionar las operaciones relacionadas con los usuarios.
-/// </summary>
-/// <remarks>
-/// Constructor de la clase UserService.
-/// </remarks>
-/// <param name="uRepository">Repositorio de usuarios.</param>
 public class UserService(IUserRepository uRepository) : IUserService
 {
     private readonly IUserRepository _uRepository = uRepository;
 
-    /// <summary>
-    /// Autoriza a un usuario basado en sus credenciales.
-    /// </summary>
-    /// <param name="login">DTO con las credenciales del usuario.</param>
-    /// <returns>Un objeto <see cref="SessionDto"/> si la autenticación es exitosa.</returns>
     public async Task<SessionDto> AuthorizedUser(UserLoginDto login)
     {
         try
@@ -50,16 +38,11 @@ public class UserService(IUserRepository uRepository) : IUserService
         }
     }
 
-    /// <summary>
-    /// Crea un nuevo usuario.
-    /// </summary>
-    /// <param name="user">DTO con los datos del usuario a crear.</param>
-    /// <returns>Un objeto <see cref="UserDto"/> con los datos del usuario creado.</returns>
-    public async Task<UserDto> CreateUserAsync(UserCreateDto user)
+    public async Task<UserDto> CreateUserAsync(UserDto user)
     {
         try
         {
-            var model = user.FromCreateUser();
+            var model = user.FromUserDto();
             var newUser = await _uRepository.Create(model);
             if (newUser.Id != 0)
             {
@@ -77,11 +60,6 @@ public class UserService(IUserRepository uRepository) : IUserService
         }
     }
 
-    /// <summary>
-    /// Elimina un usuario por su ID.
-    /// </summary>
-    /// <param name="id">ID del usuario a eliminar.</param>
-    /// <returns>True si la eliminación fue exitosa, de lo contrario False.</returns>
     public async Task<bool> DeleteUserAsync(int id)
     {
         try
@@ -110,12 +88,7 @@ public class UserService(IUserRepository uRepository) : IUserService
         }
     }
 
-    /// <summary>
-    /// Edita los datos de un usuario.
-    /// </summary>
-    /// <param name="user">DTO con los datos actualizados del usuario.</param>
-    /// <returns>True si la actualización fue exitosa, de lo contrario False.</returns>
-    public async Task<bool> EditUserAsync(UserUpdateDto user)
+    public async Task<bool> EditUserAsync(UserDto user)
     {
         try
         {
@@ -146,11 +119,6 @@ public class UserService(IUserRepository uRepository) : IUserService
         }
     }
 
-    /// <summary>
-    /// Obtiene un usuario por su ID.
-    /// </summary>
-    /// <param name="id">ID del usuario.</param>
-    /// <returns>Un objeto <see cref="UserDto"/> con los datos del usuario.</returns>
     public async Task<UserDto> GetUserById(int id)
     {
         try
@@ -173,10 +141,6 @@ public class UserService(IUserRepository uRepository) : IUserService
         }
     }
 
-    /// <summary>
-    /// Obtiene una lista de todos los usuarios.
-    /// </summary>
-    /// <returns>Una lista de objetos <see cref="UserDto"/>.</returns>
     public async Task<List<UserDto>> GetUsersAsync()
     {
         try

@@ -36,10 +36,13 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         // Db context configuration
-        var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        var connectionString = configuration
+            .GetConnectionString("DefaultConnection") 
+            ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(connectionString)
-            .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning)));
+            .ConfigureWarnings(warnings => warnings
+            .Ignore(RelationalEventId.PendingModelChangesWarning)));
         services.AddDatabaseDeveloperPageExceptionFilter();
 
         return services;

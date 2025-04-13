@@ -11,6 +11,19 @@ public static class UsersMapper
     {
         return new UserDto
         {
+            Id = user.Id,
+            FullName = user.FullName,
+            Username = user.Username,
+            Email = user.Email,
+            Password = user.Password,
+            //Roles = user.Roles
+        };
+    }
+
+    public static ApplicationUser FromUserDto(this UserDto user)
+    {
+        return new ApplicationUser
+        {
             FullName = user.FullName,
             Username = user.Username,
             Email = user.Email,
@@ -28,17 +41,7 @@ public static class UsersMapper
             //Roles = user.Roles
         };
     }
-    public static ApplicationUser FromCreateUser(this UserCreateDto createUserDto)
-    {
-        return new ApplicationUser
-        {
-            FullName = createUserDto.Username,
-            Username = createUserDto.Username,
-            Email = createUserDto.Email,
-            Password = BCrypt.Net.BCrypt.HashPassword(createUserDto.Password),
-            //Roles = user.Roles
-        };
-    }
+    
     //public static User FromUpdateUserDto(this UpdateUserDto updateUserDto, int id)
     //{
     //    return new User

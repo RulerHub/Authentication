@@ -22,10 +22,6 @@ public class UserController(IUserService uService) : ControllerBase
         var response = new ResponseDto<List<UserDto>>();
         try
         {
-            //if (search == "EMPTY")
-            //{
-            //    search = "";
-            //}
             var result = await _uService.GetUsersAsync();
             var count = result.Count;
 

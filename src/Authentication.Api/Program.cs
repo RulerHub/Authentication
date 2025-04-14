@@ -1,4 +1,4 @@
-using Authentication.Data;
+using Authentication.Data.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddServicesApplication();
 builder.Services.AddRepositoryApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+//Add authorization
+builder.Services.AddAuthenticationApplication(builder.Configuration);
+builder.Services.AddCustomAuthorizationPolicies();
+builder.Services.AddCORSApplication(builder.Configuration, builder.Environment);
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -20,6 +24,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Apply the CORS policy
+app.UseCors("AllowSpecificOrigin");
+
+// Enables authentication
+app.UseAuthentication();
+
+// Enables authorization
 app.UseAuthorization();
 
 //app.MapGroup("/api/v1/").MapControllers();

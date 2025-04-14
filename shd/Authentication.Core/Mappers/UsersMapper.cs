@@ -1,7 +1,6 @@
 using Authentication.Core.DataTransferObjects.ApplicationUsers;
 using Authentication.Core.DataTransferObjects.Authorize;
 using Authentication.Core.Entities.Identities;
-using BCrypt.Net;
 
 namespace Authentication.Core.Mappers;
 
@@ -41,7 +40,7 @@ public static class UsersMapper
             //Roles = user.Roles
         };
     }
-    
+
     //public static User FromUpdateUserDto(this UpdateUserDto updateUserDto, int id)
     //{
     //    return new User

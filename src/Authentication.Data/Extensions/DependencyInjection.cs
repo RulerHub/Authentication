@@ -1,15 +1,15 @@
 ﻿using Authentication.Data.Context;
 using Authentication.Data.Repositories.Generic;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.EntityFrameworkCore;
-using Authentication.Data.Services.Users.Interface;
-using Authentication.Data.Services.Users.Implement;
-using Authentication.Data.Repositories.Users.Interfaces;
 using Authentication.Data.Repositories.Users.Implements;
+using Authentication.Data.Repositories.Users.Interfaces;
+using Authentication.Data.Services.Users.Implement;
+using Authentication.Data.Services.Users.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Authentication.Data.Extensions;
@@ -40,7 +40,7 @@ public static class DependencyInjection
     {
         // Db context configuration
         var connectionString = configuration
-            .GetConnectionString("DefaultConnection") 
+            .GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(connectionString)
@@ -90,7 +90,7 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IServiceCollection AddCORSApplication(this 
+    public static IServiceCollection AddCORSApplication(this
         IServiceCollection services,
         IConfiguration configuration,
         IHostEnvironment Environment)

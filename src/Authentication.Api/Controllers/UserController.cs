@@ -2,7 +2,6 @@
 using Authentication.Core.DataTransferObjects.Authorize;
 using Authentication.Core.DataTransferObjects.Responses;
 using Authentication.Data.Services.Users.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Authentication.Api.Controllers;
@@ -60,7 +59,7 @@ public class UserController(IUserService uService) : ControllerBase
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> Create([FromBody]UserDto dto)
+    public async Task<IActionResult> Create([FromBody] UserDto dto)
     {
         var response = new ResponseDto<UserDto>();
         try

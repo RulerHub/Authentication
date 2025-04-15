@@ -102,8 +102,9 @@ public class UserController(IUserService uService) : ControllerBase
         var response = new ResponseDto<SessionDto>();
         try
         {
+            // Llamamos al servicio para manejar la autorización y la creación de cookies
+            response.Result = await _uService.AuthorizeUserAsync(dto, HttpContext);
             response.IsSuccessful = true;
-            response.Result = await _uService.AuthorizedUser(dto);
         }
         catch (Exception ex)
         {
@@ -113,6 +114,21 @@ public class UserController(IUserService uService) : ControllerBase
             throw;
         }
         return Ok(response);
+    }
+
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        try
+        {
+            await _uService.LogoutAsync(HttpContext);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
     }
 
     [HttpDelete("{id:int}/delete")]

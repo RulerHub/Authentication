@@ -26,8 +26,8 @@ public static class UsersMapper
             FullName = user.FullName,
             Username = user.Username,
             Email = user.Email,
-            Password = user.Password,
-            //Roles = user.Roles
+            Password = BCrypt.Net.BCrypt.HashPassword(user.Password),
+            //Roles = user.Roles 
         };
     }
     public static SessionDto ToSessionDto(this ApplicationUser user)

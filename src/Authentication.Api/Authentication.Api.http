@@ -4,10 +4,10 @@ POST {{Authentication.Api_HostAddress}}/user/create
 Content-Type: application/json
 
 {
-    "Username" : "string",
-    "Email" : "string@rulerhub.com",
-    "Password" : "string",
-    "ConfirmsPassword" : "string"
+    "Username" : "Toro",
+    "Email" : "toro@rojo.com",
+    "Password" : "Red.2025",
+    "ConfirmsPassword" : "Red.2025"
 }
 
 ###
@@ -16,7 +16,7 @@ GET {{Authentication.Api_HostAddress}}/user/index
 
 ###
 
-@id=1
+@id=0
 GET {{Authentication.Api_HostAddress}}/User/get/{{id}}
 
 ###
@@ -28,5 +28,13 @@ Content-Type: application/json
   "Email" : "adrian@rulerhub.com",
   "Password" : "Tor.2024"
 }
+
+###
+
+DELETE {{Authentication.Api_HostAddress}}/user/{{id}}/delete
+
+###
+
+POST {{Authentication.Api_HostAddress}}/user/logout
 
 ###

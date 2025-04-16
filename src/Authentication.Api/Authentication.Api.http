@@ -16,7 +16,7 @@ GET {{Authentication.Api_HostAddress}}/user/index
 
 ###
 
-@id=0
+@id=1
 GET {{Authentication.Api_HostAddress}}/User/get/{{id}}
 
 ###
@@ -25,8 +25,8 @@ POST {{Authentication.Api_HostAddress}}/user/authorize
 Content-Type: application/json
 
 {
-  "Email" : "adrian@rulerhub.com",
-  "Password" : "Tor.2024"
+  "Email" : "toro@rojo.com",
+  "Password" : "Red.2025"
 }
 
 ###

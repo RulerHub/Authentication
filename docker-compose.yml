@@ -1,6 +1,58 @@
 services:
   authentication.api:
-    image: ${DOCKER_REGISTRY-}authenticationapi
+    container_name: auth-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
     build:
       context: .
       dockerfile: src/Authentication.Api/Dockerfile
+    networks:
+      - internal_network
+    restart: on-failure
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD_FILE=/run/secrets/sa_password
+    ports:
+      - "1433:1433"
+    volumes:
+      - data:/var/opt/mssql
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 4g
+        reservations:
+          cpus: "1.0"
+          memory: 2g
+    secrets:
+      - sa_password
+    networks:
+      - internal_network
+    healthcheck:
+      test: ["CMD-SHELL", "sqlcmd -S localhost -U sa -P saPassword* -Q 'SELECT 1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  internal_network:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
+
+secrets:
+  sa_password:
+    file: ./secrets/sa_password.txt

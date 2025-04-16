@@ -66,7 +66,7 @@ public static class DependencyInjection
         {
             options.Cookie.HttpOnly = true;
             options.ExpireTimeSpan = TimeSpan.FromMinutes(configuration
-                .GetSection("JwtConfig")
+                .GetSection("CokieConfig")
                 .GetValue<int>("ExpirationMinutes"));
             options.SlidingExpiration = true;
             options.Cookie.Name = "session";
